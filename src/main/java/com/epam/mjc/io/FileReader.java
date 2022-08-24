@@ -10,16 +10,12 @@ public class FileReader {
 
     public Profile getDataFromFile(File file) {
 
-//        String stringFile = "E:\\Autocode\\stage_1\\NIO\\stage1-module6-io-task1\\src\\main\\resources\\Profile.txt";
-//        file = new File(stringFile);
         int b;
 
-        java.io.FileReader fileReader = null;
         Map<String, String> map = new HashMap<>();
         StringBuilder builder = new StringBuilder();
 
-        try {
-            fileReader = new java.io.FileReader(file);
+        try (java.io.FileReader fileReader = new java.io.FileReader(file)){
             while ((b = fileReader.read()) != -1) {
                 builder.append((char) b);
             }
@@ -29,18 +25,10 @@ public class FileReader {
                 String[] keyValue = w.split(": ");
                 map.put(keyValue[0], keyValue[1].trim());
             }
-
-
         } catch (FileNotFoundException e) {
-            System.err.println("File not found...");
+            e.printStackTrace();
         } catch (IOException e) {
             throw new RuntimeException(e);
-        } finally {
-            try {
-                fileReader.close();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
         }
 
         Profile profile = new Profile();
