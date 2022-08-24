@@ -25,18 +25,17 @@ public class FileReader {
             }
             String[] words = builder.toString().split("\n");
 
-            for(String w : words){
+            for (String w : words) {
                 String[] keyValue = w.split(": ");
                 map.put(keyValue[0], keyValue[1].trim());
             }
-
 
 
         } catch (FileNotFoundException e) {
             System.err.println("File not found...");
         } catch (IOException e) {
             throw new RuntimeException(e);
-        }finally {
+        } finally {
             try {
                 fileReader.close();
             } catch (IOException e) {
@@ -50,6 +49,6 @@ public class FileReader {
         profile.setEmail(map.get("Email"));
         profile.setPhone(Long.parseLong(map.get("Phone")));
 
-            return profile;
+        return profile;
     }
 }

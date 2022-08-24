@@ -5,6 +5,7 @@ import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
+
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -39,7 +40,7 @@ public class FileReaderTest {
     }
 
     @Test
-    public void testProgramReadsDataCorrectly () {
+    public void testProgramReadsDataCorrectly() {
         FileReader fileReader = new FileReader();
         Profile actual = fileReader.getDataFromFile(new File(TEST_FILE.toUri()));
         assertEquals(profile, actual);
@@ -67,7 +68,7 @@ public class FileReaderTest {
         assertFalse("Code contains prohibited \"FileUtils\"", sourceCode.contains("FileUtils"));
         assertFalse("Code contains prohibited \"IOUtils\"", sourceCode.contains("IOUtils"));
         assertFalse("Code contains prohibited \"Scanner\"", sourceCode.contains("Scanner"));
-        assertFalse("Code contains prohibited \"StreamTokenizer\"",sourceCode.contains("StreamTokenizer"));
+        assertFalse("Code contains prohibited \"StreamTokenizer\"", sourceCode.contains("StreamTokenizer"));
         assertFalse("Code contains prohibited \"FileChannel\"", sourceCode.contains("FileChannel"));
         assertFalse("Code contains prohibited \"com.google\"", sourceCode.contains("com.google"));
     }
@@ -88,9 +89,9 @@ public class FileReaderTest {
         try {
             FileUtils.writeStringToFile(new File(TEST_FILE.toUri()),
                     "Name: " + randomString + System.lineSeparator() +
-                            "Age: "  + randomInt + System.lineSeparator() +
+                            "Age: " + randomInt + System.lineSeparator() +
                             "Email: " + randomString + System.lineSeparator() +
-                            "Phone: "  + randomInt + System.lineSeparator(),
+                            "Phone: " + randomInt + System.lineSeparator(),
                     "UTF-8");
         } catch (IOException e) {
             throw new RuntimeException(e);
