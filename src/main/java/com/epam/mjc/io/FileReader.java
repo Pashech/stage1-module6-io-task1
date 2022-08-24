@@ -25,10 +25,8 @@ public class FileReader {
                 String[] keyValue = w.split(": ");
                 map.put(keyValue[0], keyValue[1].trim());
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         Profile profile = new Profile();
